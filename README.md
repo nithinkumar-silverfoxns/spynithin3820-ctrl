@@ -2,7 +2,9 @@
 
 ### 🛡️ Cybersecurity | Ethical Hacking | Web Security | Full-Stack Development
 
-I’m a cybersecurity-focused developer and founder of **Silverfoxns**, working on secure web applications, cybersecurity solutions, automation, and technology projects.
+## 👤 About Me
+
+I’m a cybersecurity-focused developer and founder of **Silverfoxns**, working on secure web applications, cybersecurity solutions, automation, and technology projects. My primary focus is cybersecurity and web security, with web development and automation as supporting services.
 
 🌐 [Silverfoxns](https://www.silverfoxns.com)
 
