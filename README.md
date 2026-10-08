@@ -27,6 +27,13 @@ I’m a cybersecurity-focused developer and founder of **Silverfoxns**, working 
 
 ---
 
+## 🚀 Projects
+
+- [Silverfoxns Website](https://www.silverfoxns.com) — Cybersecurity-focused company website and services.
+- [TTT Academy](https://tttacademy.in) CRM — A CRM platform supporting admissions, student registration, staff workflows, publications, and reporting.
+
+---
+
 ## 🧰 Technologies
 
 `Python` `PHP` `JavaScript` `MySQL` `Bootstrap`  
