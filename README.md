@@ -30,7 +30,12 @@ I’m a cybersecurity-focused developer and founder of **Silverfoxns**, working 
 ## 🚀 Projects
 
 - [Silverfoxns Website](https://www.silverfoxns.com) — Cybersecurity-focused company website and services.
-- [TTT Academy](https://tttacademy.in) CRM — A CRM platform supporting admissions, student registration, staff workflows, publications, and reporting.
+- [TTT Academy Website](https://tttacademy.in) — Public website with admissions, contact forms, and content management.
+- **TTT Academy CRM** — Admissions, student registration, lead management, staff workflows, publications, and reporting.
+- **TTT Academy Counselling & College Predictor** — KCET/DCET counselling information, college exploration, and college prediction tools.
+- **KCET/DCET Engineering Counselling Portal** — College search, cutoff information, and option-entry planning.
+- **Student Leads Portal** — Student lead capture and college lookup.
+- **TTT Publications Website** — Educational books and publications for DCET, KCET, PUC, and SSLC.
 
 ---
 
