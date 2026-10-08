@@ -40,4 +40,10 @@ I’m a cybersecurity-focused developer and founder of **Silverfoxns**, working 
 
 ---
 
+## 🤝 Sponsorship
+
+I’m currently looking for sponsors to support my cybersecurity and technology projects. If you’re interested in sponsoring my work, please get in touch through [Silverfoxns](https://www.silverfoxns.com).
+
+---
+
 ⭐ If you find my projects useful, consider giving them a star!
