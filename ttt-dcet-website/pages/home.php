@@ -7,7 +7,7 @@ page_meta([
     'description' => 'T.T.T Academy: DCET State 1st rank in 2023 & 2025, ' . $latest['below_100'] . ' students under rank 100 and ' . $latest['below_2000'] . ' under rank 2000 in DCET ' . $latest['year'] . '. Pratigna (12 months), Jnana (6 months) & Pragathi (2 months) batches — online & offline.',
     'body_class' => 'page-home',
 ]);
-page_script('assets/js/hero-3d.js', true);
+page_script('assets/js/hero-3d.js');
 
 $heroToppers = [];
 foreach (featured_toppers() as $t) {

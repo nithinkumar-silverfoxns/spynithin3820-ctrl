@@ -1,9 +1,12 @@
 /* T.T.T Academy — 3D hero: rotating knowledge globe, floating books & engineering objects.
-   Loaded as an ES module only on the home page. Pauses off-screen; static under reduced motion. */
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js';
-
+   Classic script that lazy-loads Three.js (ES module) from the CDN, so it also works from file:// previews.
+   Loaded only on the home page. Pauses off-screen; static under reduced motion. */
+(async () => {
 const canvas = document.getElementById('hero3d');
-if (canvas && window.WebGLRenderingContext) init();
+if (!canvas || !window.WebGLRenderingContext) return;
+let THREE;
+try { THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js'); } catch (e) { return; }
+init();
 
 function init() {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -165,3 +168,4 @@ function init() {
   };
   if (reduced) render(); else loop();
 }
+})();
