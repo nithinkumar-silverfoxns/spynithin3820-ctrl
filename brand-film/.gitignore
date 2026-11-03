@@ -1,2 +1,4 @@
 .render-tmp/
 node_modules/
+voices/
+.vo-raw/

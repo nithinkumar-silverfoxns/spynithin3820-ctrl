@@ -44,3 +44,49 @@ Needs Node + Playwright (Chromium), ffmpeg, Python 3 + numpy, and the Inter / In
 
 **Using your existing logo:** the fox mark is defined once in `film.js` (`FP` + `buildFox`). You can change those
 points to match an existing mark, or swap the finale lock-up in `sceneFinale` for an image. Then re-render.
+
+---
+
+# SILVERFOXNS — THE DIGITAL SHADOW (60 s, 4K, with narration)
+
+The second film tells one continuous story: a city under invisible threat, the silver fox awakening, the fox walking into a
+security operations centre, the reflection into technology, the founder interview, and the fox dissolving into the logo.
+
+| File | What it is |
+|---|---|
+| `silverfoxns-digital-shadow-4k.mp4` / `-1080p.mp4` | Rendered film with narration, score and sound design |
+| `shadow.html` + `shadow.js` | The film engine. Open `shadow.html` in Chrome and press **PLAY FILM** to watch it live |
+| `voiceover.sh` → `vo/l1–l9.wav` | Narration: Piper neural voice (`en_US-ryan-high`), pitched down, EQ'd and compressed |
+| `score_shadow.py` → `shadow-mix.wav` | Score + narration + founder audio, with automatic ducking under speech (uses `synth.py`) |
+| `silverfoxns-digital-shadow.srt` | Subtitles for the narration |
+
+| Time | Scene |
+|---|---|
+| 0:00–0:10 | **The digital world**: drone flight between glass towers at night; data streams and links between towers; threats spread in red; a moment of silence and signal glitch, then the bass impact; the camera rises above the city |
+| 0:10–0:15 | **The fox awakens**: silver particles form the fox; the camera pushes into an extreme close-up of its eye |
+| 0:15–0:21 | **The walk**: a full-body metallic particle fox walks through a digital space; the camera tracks it toward a doorway of light |
+| 0:21–0:35 | **Security operations**: the fox enters the operations centre; *SILVERFOXNS*, then 01 Security assessments · 02 Threat intelligence / exposure monitoring · 03 Digital investigations / dark web awareness · 04 Secure networks |
+| 0:35–0:43 | **Through the reflection**: interfaces slide across the metal fox, then the camera dives through its eye into web development, CRM platforms and business automation |
+| 0:43–0:52 | **Founder interview**: *Why did you build SILVERFOXNS?* — NITHINKUMAR, Founder – SILVERFOXNS |
+| 0:52–1:00 | **Signature reveal**: the fox walks toward the camera, dissolves into particles and becomes the logo, then *BEYOND SECURITY. BEYOND LIMITS.*, www.silverfoxns.com, *Founded by Nithinkumar.* |
+
+## Adding the genuine assets
+
+The brief asks for the real logo and a genuine founder recording. Neither was supplied, so:
+
+- **Founder interview**: the scene shows a clearly marked placeholder. Put the real clip (8–9 s, horizontal) at
+  `assets/founder.mp4`. `render.js` composites it full-frame with the grade, slow push-in, question and lower third, and
+  `score_shadow.py` mixes its audio and lowers the music underneath.
+- **Logo**: the film currently uses the faceted fox mark. Put the real logo (transparent PNG) at `assets/logo.png`. In the finale
+  the particles assemble into its shape and the logo itself is shown.
+- **Narrator**: to use a human voice-over artist, record the nine lines from `voiceover.sh` as `vo/l1.wav … vo/l9.wav`.
+
+```bash
+./voiceover.sh                                   # or drop in recorded vo/*.wav
+ffmpeg -i assets/founder.mp4 -vn -ac 1 -ar 48000 assets/founder.wav   # only once the real clip is supplied
+python3 score_shadow.py shadow-mix.wav           # music + narration (+ founder audio) mix
+node render.js --page shadow.html --scale 2 --audio shadow-mix.wav --out silverfoxns-digital-shadow-4k.mp4
+```
+
+No clients, certifications, achievements or capabilities are claimed. The on-screen interfaces are illustrative and
+show only the services named in the brief.
