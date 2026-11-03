@@ -7,7 +7,8 @@ so the film renders to video frame by frame with no randomness between renders.
 
 | File | What it is |
 |---|---|
-| `silverfoxns-brand-film-1080p.mp4` | Final film, 1920×1080, 30 fps, H.264 + AAC (shareable) |
+| `silverfoxns-brand-film-4k.mp4` | Final film, 3840×2160 (4K UHD), 30 fps, H.264 + AAC |
+| `silverfoxns-brand-film-1080p.mp4` | Same film at 1920×1080 for web and social |
 | `film.html` + `film.js` | The film engine. Open `film.html` in Chrome and press **PLAY FILM** to watch it live |
 | `score.py` → `score.wav` | Original score: strings, low brass, ostinato, taiko and boom impacts, risers, piano motif, digital textures, convolution reverb |
 | `render.js` | Frame-accurate renderer (Playwright + ffmpeg). `--scale 2` = 3840×2160 (4K) |
