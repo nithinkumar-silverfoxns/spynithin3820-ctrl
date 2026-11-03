@@ -1,0 +1,35 @@
+# T.T.T Academy DCET website — Apache configuration
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # RewriteBase /            # uncomment & adjust if installed in a sub-folder
+
+    # Force HTTPS (uncomment in production behind TLS)
+    # RewriteCond %{HTTPS} !=on
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Block internal folders
+    RewriteRule ^(app|config|data|database|templates|pages|handlers|storage)(/|$) - [F,L]
+    RewriteRule (^|/)\. - [F,L]
+
+    # Front controller for everything that is not a real file
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L,QSA]
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(webp|png|jpe?g|svg|ico|woff2?|css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml
+</IfModule>
+
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+</IfModule>

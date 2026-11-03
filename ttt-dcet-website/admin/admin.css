@@ -1,0 +1,23 @@
+:root { --navy: #0b1437; --blue: #2f6bff; }
+body { font-family: Inter, system-ui, sans-serif; background: #f4f6fc; color: #0b1437; }
+.ic { width: 18px; height: 18px; flex: none; }
+.adm { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+.adm-side { background: var(--navy); color: #fff; padding: 20px 14px; display: flex; flex-direction: column; gap: 14px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.adm-brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; text-decoration: none; padding: 4px 8px 12px; }
+.adm-brand img { background: #fff; border-radius: 10px; padding: 3px; }
+.adm-side nav { display: flex; flex-direction: column; gap: 2px; }
+.adm-side nav a, .adm-side-foot a, .adm-side-foot button { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.75); text-decoration: none; padding: 8px 10px; border-radius: 10px; font-size: .9rem; background: none; border: 0; width: 100%; text-align: left; }
+.adm-side nav a:hover, .adm-side nav a.on, .adm-side-foot a:hover, .adm-side-foot button:hover { background: rgba(255,255,255,.1); color: #fff; }
+.adm-side-foot { margin-top: auto; border-top: 1px solid rgba(255,255,255,.1); padding-top: 10px; }
+.adm-main { padding: 28px clamp(16px, 3vw, 40px); min-width: 0; }
+.adm-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; }
+.adm-card { background: #fff; border: 1px solid rgba(11,20,55,.08); border-radius: 16px; padding: 20px; box-shadow: 0 2px 6px rgba(11,20,55,.04); }
+.adm-card summary { cursor: pointer; list-style: none; }
+.adm-card summary::-webkit-details-marker { display: none; }
+.adm-kpi { font-size: 2rem; font-weight: 700; color: var(--blue); }
+.adm-thumb { width: 96px; height: 96px; object-fit: cover; border-radius: 12px; border: 1px solid #e5e8f2; }
+.adm-auth { min-height: 100vh; display: grid; place-items: center; padding: 20px; background: radial-gradient(60% 60% at 0% 0%, rgba(47,107,255,.25), transparent 70%), radial-gradient(50% 60% at 100% 100%, rgba(124,58,237,.25), transparent 70%), var(--navy); }
+.adm-login { width: min(420px, 100%); }
+.badge.st-new { background: #2f6bff; } .badge.st-contacted { background: #c98a12; } .badge.st-enrolled { background: #12a150; } .badge.st-closed { background: #7a849f; }
+.btn-primary { background: var(--blue); border-color: var(--blue); }
+@media (max-width: 991px) { .adm { grid-template-columns: 1fr; } .adm-side { position: static; height: auto; } .adm-side nav { flex-direction: row; flex-wrap: wrap; } .adm-side nav a { width: auto; } }

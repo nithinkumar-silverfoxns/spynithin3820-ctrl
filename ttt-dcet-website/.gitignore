@@ -1,0 +1,7 @@
+config/config.local.php
+uploads/public/*
+!uploads/public/.gitkeep
+storage/private/*
+!storage/private/.gitkeep
+.DS_Store
+*.log
