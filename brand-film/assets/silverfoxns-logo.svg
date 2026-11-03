@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="SILVERFOXNS — Beyond Security. Beyond Limits.">
+  <defs>
+    <linearGradient id="silver" x1="0" x2="1"><stop offset="0" stop-color="#b2bcc6"/><stop offset=".5" stop-color="#f2f6f9"/><stop offset="1" stop-color="#b0bac5"/></linearGradient>
+    <linearGradient id="rule" x1="0" x2="1"><stop offset="0" stop-color="#7cc4ff" stop-opacity="0"/><stop offset=".5" stop-color="#7cc4ff"/><stop offset="1" stop-color="#7cc4ff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="bg" cx=".5" cy=".4" r=".75"><stop offset="0" stop-color="#121924"/><stop offset="1" stop-color="#03050a"/></radialGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <g>
+    <polygon points="489.00,100.00 457.50,232.00 558.00,175.00" fill="rgb(192,198,205)" stroke="rgb(192,198,205)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="558.00,175.00 600.00,187.00 549.00,244.00" fill="rgb(208,214,220)" stroke="rgb(208,214,220)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="600.00,187.00 600.00,253.00 549.00,244.00" fill="rgb(228,233,239)" stroke="rgb(228,233,239)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="457.50,232.00 558.00,175.00 549.00,244.00" fill="rgb(161,167,174)" stroke="rgb(161,167,174)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="457.50,232.00 549.00,244.00 444.00,268.00" fill="rgb(137,143,152)" stroke="rgb(137,143,152)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="444.00,268.00 549.00,244.00 513.00,313.00" fill="rgb(181,186,194)" stroke="rgb(181,186,194)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="549.00,244.00 600.00,253.00 570.00,334.00" fill="rgb(216,221,228)" stroke="rgb(216,221,228)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="549.00,244.00 570.00,334.00 513.00,313.00" fill="rgb(147,153,161)" stroke="rgb(147,153,161)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="513.00,313.00 570.00,334.00 600.00,394.00" fill="rgb(113,119,129)" stroke="rgb(113,119,129)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="600.00,253.00 570.00,334.00 600.00,394.00" fill="rgb(196,202,209)" stroke="rgb(196,202,209)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="711.00,100.00 742.50,232.00 642.00,175.00" fill="rgb(171,176,184)" stroke="rgb(171,176,184)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="642.00,175.00 600.00,187.00 651.00,244.00" fill="rgb(184,190,197)" stroke="rgb(184,190,197)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="600.00,187.00 600.00,253.00 651.00,244.00" fill="rgb(201,207,214)" stroke="rgb(201,207,214)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="742.50,232.00 642.00,175.00 651.00,244.00" fill="rgb(144,150,158)" stroke="rgb(144,150,158)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="742.50,232.00 651.00,244.00 756.00,268.00" fill="rgb(123,129,138)" stroke="rgb(123,129,138)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="756.00,268.00 651.00,244.00 687.00,313.00" fill="rgb(161,166,174)" stroke="rgb(161,166,174)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="651.00,244.00 600.00,253.00 630.00,334.00" fill="rgb(191,197,204)" stroke="rgb(191,197,204)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="651.00,244.00 630.00,334.00 687.00,313.00" fill="rgb(132,138,146)" stroke="rgb(132,138,146)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="687.00,313.00 630.00,334.00 600.00,394.00" fill="rgb(103,109,118)" stroke="rgb(103,109,118)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="600.00,253.00 630.00,334.00 600.00,394.00" fill="rgb(174,180,187)" stroke="rgb(174,180,187)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="489.00,100.00 510.00,193.00 558.00,175.00" fill="rgb(74,80,90)" stroke="rgb(74,80,90)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="711.00,100.00 690.00,193.00 642.00,175.00" fill="rgb(74,80,90)" stroke="rgb(74,80,90)" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="586.50,377.50 613.50,377.50 600.00,395.50" fill="#10151c" stroke="#10151c" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="529.50,236.50 556.50,229.00 568.50,245.50" fill="#8fd0ff" stroke="#8fd0ff" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="529.50,236.50 568.50,245.50 546.00,250.00" fill="#8fd0ff" stroke="#8fd0ff" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="670.50,236.50 643.50,229.00 631.50,245.50" fill="#8fd0ff" stroke="#8fd0ff" stroke-width="0.6" stroke-linejoin="round"/>
+    <polygon points="670.50,236.50 631.50,245.50 654.00,250.00" fill="#8fd0ff" stroke="#8fd0ff" stroke-width="0.6" stroke-linejoin="round"/>
+  </g>
+  <text x="608" y="530" text-anchor="middle" font-family="'Inter Display','Inter','Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="88" letter-spacing="24" fill="url(#silver)">SILVERFOXNS</text>
+  <rect x="400" y="566" width="400" height="1.5" fill="url(#rule)"/>
+  <text x="606" y="630" text-anchor="middle" font-family="'Inter Display','Inter','Helvetica Neue',Arial,sans-serif" font-weight="300" font-size="27" letter-spacing="11" fill="#cfd9e2">BEYOND SECURITY. BEYOND LIMITS.</text>
+  <text x="603" y="684" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="19" letter-spacing="5" fill="#7f93a8">www.silverfoxns.com</text>
+</svg>

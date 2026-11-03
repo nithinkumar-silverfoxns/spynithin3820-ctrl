@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SILVERFOXNS — Brand Film</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #stage { position: fixed; inset: 0; display: grid; place-items: center; }
+  canvas { width: min(100vw, 177.78vh); height: auto; aspect-ratio: 16/9; display: block; background: #000; }
+  #play { position: fixed; inset: 0; display: grid; place-items: center; cursor: pointer; background: rgba(0,0,0,.35);
+          color: #d7dee5; font: 300 14px/1 'Inter', sans-serif; letter-spacing: .5em; }
+  #play span { border: 1px solid rgba(215,222,229,.45); padding: 22px 34px 22px 40px; }
+  body.render #play { display: none; }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="c"></canvas></div>
+<div id="play"><span>PLAY FILM</span></div>
+<audio id="score" src="score.m4a" preload="auto"></audio>
+<script src="film.js"></script>
+<script>
+  const q = new URLSearchParams(location.search);
+  const render = q.has('render');
+  if (render) document.body.classList.add('render');
+  const scale = parseFloat(q.get('scale') || (render ? 2 : Math.min(2, Math.max(1, devicePixelRatio || 1))));
+  SFX.init(document.getElementById('c'), scale);
+  window.ready = (async () => {
+    const fams = ["300 40px 'Inter Display'", "500 40px 'Inter Display'", "400 40px 'Inter'", "600 40px 'Inter'", "400 20px 'JetBrains Mono'", "500 20px 'JetBrains Mono'"];
+    await Promise.all(fams.map(f => document.fonts.load(f).catch(() => {})));
+    SFX.renderFrame(q.has('t') ? parseFloat(q.get('t')) : 0);
+    return true;
+  })();
+  if (!render) {
+    const audio = document.getElementById('score'), btn = document.getElementById('play');
+    let start = null;
+    const loop = () => { const t = !audio.paused && audio.readyState >= 2 ? audio.currentTime : (performance.now() - start) / 1000;
+      SFX.renderFrame(t); if (t < SFX.DURATION) requestAnimationFrame(loop); else btn.style.display = 'grid'; };
+    btn.onclick = async () => { btn.style.display = 'none'; start = performance.now(); audio.currentTime = 0; try { await audio.play(); } catch (e) {} requestAnimationFrame(loop); };
+  }
+</script>
+</body>
+</html>
