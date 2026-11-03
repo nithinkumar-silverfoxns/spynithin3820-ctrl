@@ -2,3 +2,4 @@
 node_modules/
 voices/
 .vo-raw/
+__pycache__/
