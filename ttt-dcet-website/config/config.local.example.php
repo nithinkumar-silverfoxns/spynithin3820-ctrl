@@ -2,7 +2,7 @@
 // Copy to config/config.local.php and fill in. This file is git-ignored once copied.
 return [
     'APP_URL'        => 'https://www.example.com',
-    'APP_BASE_PATH'  => '',          // '' if the site lives at the domain root
+    // 'APP_BASE_PATH' => '/ttt-dcet-website', // optional: auto-detected when omitted
     'ASSET_URL'      => '',          // optional CDN origin for /assets
     'APP_ENV'        => 'production', // 'development' shows PHP errors
     'DB_HOST'        => '127.0.0.1',

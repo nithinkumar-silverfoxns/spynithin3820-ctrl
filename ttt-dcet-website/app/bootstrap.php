@@ -7,6 +7,30 @@ $GLOBALS['config'] = require ROOT . '/config/config.php';
 
 date_default_timezone_set(config('app.timezone'));
 
+// Auto-detect the sub-folder (e.g. http://localhost/ttt-dcet-website/ in XAMPP) when not configured.
+if ($GLOBALS['config']['app']['base_path'] === null) {
+    $GLOBALS['config']['app']['base_path'] = detect_base_path();
+}
+
+function detect_base_path(): string
+{
+    $docRoot = realpath((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''));
+    $root = realpath(ROOT);
+    if (PHP_SAPI === 'cli' || !$docRoot || !$root) {
+        return '';
+    }
+    $norm = static fn(string $p) => rtrim(str_replace('\\', '/', $p), '/');
+    $docRoot = $norm($docRoot);
+    $root = $norm($root);
+    // Windows paths are case-insensitive (C:\xampp\htdocs vs c:/xampp/htdocs)
+    if (stripos($root, $docRoot) === 0) {
+        $rel = substr($root, strlen($docRoot));
+        $rel = '/' . trim($rel, '/');
+        return $rel === '/' ? '' : implode('/', array_map('rawurlencode', explode('/', $rel)));
+    }
+    return '';
+}
+
 if (config('app.env') === 'development') {
     ini_set('display_errors', '1');
     error_reporting(E_ALL);

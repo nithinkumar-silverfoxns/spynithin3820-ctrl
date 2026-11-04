@@ -23,8 +23,9 @@ return [
         'tagline'   => "Karnataka's trusted DCET coaching centre",
         // Public base URL without trailing slash, e.g. https://dcet.tttacademics.com
         'url'       => rtrim((string) $env('APP_URL', ''), '/'),
-        // Sub-folder the site is served from ('' when at the domain root, '/ttt' when in a folder)
-        'base_path' => rtrim((string) $env('APP_BASE_PATH', ''), '/'),
+        // Sub-folder the site is served from ('' at the domain root, '/ttt-dcet-website' in XAMPP).
+        // Leave unset to auto-detect from the web server's document root.
+        'base_path' => ($bp = $env('APP_BASE_PATH', null)) === null ? null : rtrim((string) $bp, '/'),
         // Optional CDN origin for /assets (e.g. https://cdn.example.com). Empty = same origin.
         'asset_url' => rtrim((string) $env('ASSET_URL', ''), '/'),
         'env'       => (string) $env('APP_ENV', 'production'),
@@ -34,7 +35,7 @@ return [
         'host'    => (string) $env('DB_HOST', '127.0.0.1'),
         'port'    => (int) $env('DB_PORT', 3306),
         'name'    => (string) $env('DB_NAME', 'ttt_dcet'),
-        'user'    => (string) $env('DB_USER', 'ttt_dcet'),
+        'user'    => (string) $env('DB_USER', 'root'),
         'pass'    => (string) $env('DB_PASS', ''),
         'charset' => 'utf8mb4',
     ],

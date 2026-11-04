@@ -77,6 +77,8 @@ storage/private/     Student-only PDFs (not web-accessible)
 5. **Permissions:** the web server must be able to write to `uploads/public/` and `storage/private/`.
 6. **Production:** uncomment the HTTPS redirect in `.htaccess` and keep `APP_ENV=production`.
 
+**XAMPP (Windows):** put the folder at `C:\xampp\htdocs\ttt-dcet-website` (not nested inside another folder). Import `database/ttt_dcet.sql` into a `ttt_dcet` database in phpMyAdmin, then open `http://localhost/ttt-dcet-website/`. The sub-folder is detected automatically, and the default database login is XAMPP's `root` with no password. Create the admin with `C:\xampp\php\php.exe database\install.php --admin-user=admin --admin-pass=...`.
+
 **Local development:**
 
 ```bash
