@@ -76,7 +76,10 @@
   const show = (i) => {
     idx = (i + group.length) % group.length;
     const a = group[idx];
-    $('img', lb).src = a.getAttribute('href');
+    // 4K file only for large / high-density screens; 1920px version otherwise (saves mobile data)
+    const href = a.getAttribute('href');
+    const wantsHuge = Math.max(screen.width, screen.height) * (window.devicePixelRatio || 1) > 2600;
+    $('img', lb).src = wantsHuge ? href : href.replace('-3840.webp', '.webp');
     $('img', lb).alt = a.dataset.caption || '';
     $('figcaption', lb).textContent = a.dataset.caption || '';
   };
