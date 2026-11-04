@@ -9,7 +9,7 @@
  */
 ?>
 <section class="page-hero">
-  <?php if (!empty($bg)): ?><div class="ph-bg"><?= img($bg, '', 'img-cover', ['loading' => 'eager', 'fetchpriority' => 'high']) ?></div><?php endif; ?>
+  <?php if (!empty($bg)): ?><div class="ph-bg"><?= img($bg, '', 'img-cover', ['loading' => 'eager', 'fetchpriority' => 'high', 'sizes' => '100vw']) ?></div><?php endif; ?>
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="orb orb-a" aria-hidden="true" data-parallax="80"></div>
   <div class="orb orb-b" aria-hidden="true" data-parallax="140"></div>

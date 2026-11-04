@@ -17,7 +17,7 @@ partial('page-hero', [
 
 <section class="sec-sm overflow-hidden">
   <div class="strip" data-scroll-x="-1" aria-hidden="true">
-    <?php foreach (array_slice($items, 0, 8) as $g): ?><?= img($g['image'], '') ?><?php endforeach; ?>
+    <?php foreach (array_slice($items, 0, 8) as $g): ?><?= img($g['image'], '', '', ['sizes' => '460px']) ?><?php endforeach; ?>
   </div>
 </section>
 
@@ -29,7 +29,7 @@ partial('page-hero', [
     </div>
     <div class="masonry">
       <?php foreach ($items as $g): ?>
-      <a href="<?= e(media_url($g['image'])) ?>" data-lightbox="gallery" data-caption="<?= e($g['title']) ?>" data-filter-item="<?= e($g['category']) ?>"><?= img($g['image'], $g['title']) ?></a>
+      <a href="<?= e(image_large($g['image'])) ?>" data-lightbox="gallery" data-caption="<?= e($g['title']) ?>" data-filter-item="<?= e($g['category']) ?>"><?= img($g['image'], $g['title'], '', ['sizes' => '(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 420px']) ?></a>
       <?php endforeach; ?>
     </div>
   </div>

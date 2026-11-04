@@ -34,7 +34,7 @@ require ROOT . '/templates/header.php';
     <?php if ($heroVideo): ?>
       <video autoplay muted loop playsinline preload="metadata" poster="<?= e(asset($heroSlides[0])) ?>"><source src="<?= e(media_url($heroVideo)) ?>" type="video/mp4"></video>
     <?php else: foreach ($heroSlides as $i => $s): ?>
-      <?= img($s, '', '', ['loading' => $i === 0 ? 'eager' : 'lazy', 'fetchpriority' => $i === 0 ? 'high' : null]) ?>
+      <?= img($s, '', '', ['loading' => $i === 0 ? 'eager' : 'lazy', 'fetchpriority' => $i === 0 ? 'high' : null, 'sizes' => '100vw']) ?>
     <?php endforeach; endif; ?>
   </div>
   <canvas id="hero3d" aria-hidden="true"></canvas>
@@ -254,7 +254,7 @@ require ROOT . '/templates/header.php';
     <a class="link-arrow" href="<?= e(url('/gallery')) ?>">View the full gallery <?= icon('arrow', 'ic ic-sm') ?></a>
   </div>
   <div class="strip mb-3" data-scroll-x="-1">
-    <?php foreach (array_merge($campus, $classes) as $g): ?><a href="<?= e(asset($g['image'])) ?>" data-lightbox="home" data-caption="<?= e($g['title']) ?>"><?= img($g['image'], $g['title']) ?></a><?php endforeach; ?>
+    <?php foreach (array_merge($campus, $classes) as $g): ?><a href="<?= e(image_large($g['image'])) ?>" data-lightbox="home" data-caption="<?= e($g['title']) ?>"><?= img($g['image'], $g['title'], '', ['sizes' => '460px']) ?></a><?php endforeach; ?>
   </div>
 </section>
 

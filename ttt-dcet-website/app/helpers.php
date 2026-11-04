@@ -69,6 +69,11 @@ function img(?string $path, string $alt, string $class = '', array $attrs = []):
     if (!empty($dims[$path])) {
         $attrs += ['width' => $dims[$path][0], 'height' => $dims[$path][1]];
     }
+    // Responsive 4K: use name-640 / name-1280 / name / name-3840 variants when they exist.
+    if (!isset($attrs['srcset']) && ($set = image_srcset($path))) {
+        $attrs['srcset'] = $set;
+        $attrs += ['sizes' => '(max-width: 768px) 100vw, 60vw'];
+    }
     $html = '<img src="' . e(media_url($path)) . '" alt="' . e($alt) . '"';
     if ($class !== '') {
         $html .= ' class="' . e($class) . '"';
@@ -80,6 +85,35 @@ function img(?string $path, string $alt, string $class = '', array $attrs = []):
         $html .= ' ' . e($k) . '="' . e($v) . '"';
     }
     return $html . '>';
+}
+
+/** Width-descriptor srcset from sibling size variants (name-640.webp, name-1280.webp, name.webp, name-3840.webp). */
+function image_srcset(string $path): string
+{
+    static $cache = [];
+    if (isset($cache[$path])) {
+        return $cache[$path];
+    }
+    if (preg_match('#^https?://#', $path) || !preg_match('#^(.*?)(\.webp)$#', $path, $m)) {
+        return $cache[$path] = '';
+    }
+    $parts = [];
+    foreach (['-640', '-1280', '', '-3840'] as $suffix) {
+        $p = $m[1] . $suffix . $m[2];
+        $f = ROOT . '/' . ltrim($p, '/');
+        if (is_file($f) && ($info = @getimagesize($f))) {
+            $parts[$info[0]] = media_url($p) . ' ' . $info[0] . 'w';
+        }
+    }
+    ksort($parts);
+    return $cache[$path] = count($parts) > 1 ? implode(', ', $parts) : '';
+}
+
+/** Largest available variant of an image (used for lightbox / full-screen views). */
+function image_large(string $path): string
+{
+    $big = preg_replace('#\.webp$#', '-3840.webp', $path);
+    return media_url($big !== $path && is_file(ROOT . '/' . ltrim($big, '/')) ? $big : $path);
 }
 
 function redirect(string $to, int $code = 302): never
