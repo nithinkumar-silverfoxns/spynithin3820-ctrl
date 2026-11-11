@@ -36,7 +36,8 @@ account and you're in.
 |---------|-----|-------|
 | "Hey Silverfox" wake word | Licensed on-device engine (e.g. Picovoice Porcupine) + custom keyword file | `docs/VOICE.md` |
 | Live streaming voice | `react-native-webrtc` + Expo **dev client** (not Expo Go) | `docs/VOICE.md` |
-| Flashlight, battery, camera, alarms, reminders, contacts, notifications | Native modules / platform APIs | `android/`, `ios/` (Phase 3) |
+| Flashlight, battery, camera, alarms, reminders | Native module (implemented) — links in on a native build | `modules/jarvis-native/`, `docs/NATIVE.md` |
+| Contacts, notifications | Platform APIs, not yet implemented | `docs/NATIVE.md` |
 
 Actions that aren't implemented yet return an honest "needs the native module"
 message — never a fake success (see `src/services/deviceActions.ts`).
