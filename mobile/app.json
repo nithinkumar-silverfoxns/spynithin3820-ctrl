@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "SILVERFOXNS JARVIS",
+    "slug": "silverfoxns-jarvis",
+    "scheme": "silverfoxjarvis",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#060A18"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ns.silverfox.jarvis",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "JARVIS listens for your voice commands after you say \"Hey Silverfox\".",
+        "NSSpeechRecognitionUsageDescription": "JARVIS converts your speech to text so it can understand you.",
+        "NSFaceIDUsageDescription": "JARVIS uses Face ID to unlock your assistant securely.",
+        "NSContactsUsageDescription": "JARVIS looks up contacts only when you ask it to.",
+        "NSCalendarsUsageDescription": "JARVIS adds reminders and events when you ask."
+      }
+    },
+    "android": {
+      "package": "ns.silverfox.jarvis",
+      "permissions": [
+        "RECORD_AUDIO",
+        "USE_BIOMETRIC",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_MICROPHONE"
+      ]
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-local-authentication"
+    ]
+  }
+}

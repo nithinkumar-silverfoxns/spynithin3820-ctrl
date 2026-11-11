@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.db
+.env
+
+# Node / React Native
+node_modules/
+.expo/
+dist/
+*.log
+
+# Native build output
+android/app/build/
+ios/build/
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# OS
+.DS_Store

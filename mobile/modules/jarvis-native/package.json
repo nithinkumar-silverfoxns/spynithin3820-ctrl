@@ -1,0 +1,7 @@
+{
+  "name": "jarvis-native",
+  "version": "0.1.0",
+  "description": "SILVERFOXNS JARVIS native device actions (Expo local module)",
+  "main": "index.ts",
+  "private": true
+}

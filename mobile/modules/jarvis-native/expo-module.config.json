@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["JarvisNativeModule"]
+  },
+  "android": {
+    "modules": ["ns.silverfox.jarvisnative.JarvisNativeModule"]
+  }
+}
