@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct JarvisApp: App {
+struct SilverFoxApp: App {
     @StateObject private var assistant = Assistant()
 
     var body: some Scene {

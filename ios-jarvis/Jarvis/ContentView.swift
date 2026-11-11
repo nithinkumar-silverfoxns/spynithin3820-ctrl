@@ -11,7 +11,7 @@ struct ContentView: View {
                 conversation
                 inputBar
             }
-            .navigationTitle("Jarvis")
+            .navigationTitle("SilverFox")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { showSettings = true } label: { Image(systemName: "gearshape") }
@@ -55,7 +55,7 @@ struct ContentView: View {
 
     private var inputBar: some View {
         HStack(spacing: 10) {
-            TextField("Ask Jarvis…", text: $draft, axis: .vertical)
+            TextField("Ask SilverFox…", text: $draft, axis: .vertical)
                 .textFieldStyle(.roundedBorder)
                 .onSubmit(sendDraft)
 

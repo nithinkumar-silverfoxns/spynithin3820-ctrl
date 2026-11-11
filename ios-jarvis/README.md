@@ -1,6 +1,7 @@
-# Jarvis — a voice AI assistant for iPhone
+# SilverFox — a voice AI assistant for iPhone
+### by SilverFoxNS
 
-A SwiftUI starter app: you talk to it, **Claude** decides what to do, and it acts
+A SwiftUI starter app (SilverFoxNS): you talk to it, **Claude** decides what to do, and it acts
 on your iPhone through **tool use** — creating reminders and calendar events,
 reading your schedule, opening apps/links, starting calls, pre-filling messages,
 and running your **Siri Shortcuts** (the bridge to everything else: smart home,
@@ -17,12 +18,12 @@ Apple's sandbox is strict. A custom app **cannot**:
 So this is not an Android-style "control anything" agent — nothing on iOS can be.
 What it *is*: a genuinely useful voice assistant that acts through the official
 APIs above, plus **Shortcuts** as the escape hatch for everything else. If you can
-build it as a Shortcut, Jarvis can run it by name.
+build it as a Shortcut, SilverFox can run it by name.
 
 ## Setup
 
 1. **Mac with Xcode 15+** and an iPhone running iOS 17+.
-2. In Xcode: **File ▸ New ▸ Project ▸ iOS ▸ App**, name it `Jarvis`, interface
+2. In Xcode: **File ▸ New ▸ Project ▸ iOS ▸ App**, name it `SilverFox`, interface
    **SwiftUI**, language **Swift**.
 3. Delete the generated `ContentView.swift` and the `App` file, then drag every
    `.swift` file from `Jarvis/` in this folder into the project.

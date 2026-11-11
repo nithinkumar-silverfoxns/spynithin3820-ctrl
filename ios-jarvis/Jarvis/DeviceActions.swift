@@ -2,7 +2,7 @@ import Foundation
 import EventKit
 import UIKit
 
-/// The "hands" of Jarvis: the real iOS actions behind each tool.
+/// The "hands" of SilverFox: the real iOS actions behind each tool.
 /// Everything here stays inside Apple's sandbox — no driving of other apps.
 @MainActor
 final class DeviceActions {
@@ -115,11 +115,11 @@ final class DeviceActions {
             case .event:    granted = try await store.requestFullAccessToEvents()
             case .reminder: granted = try await store.requestFullAccessToReminders()
             }
-            if !granted { throw NSError(domain: "Jarvis", code: 1,
+            if !granted { throw NSError(domain: "SilverFox", code: 1,
                 userInfo: [NSLocalizedDescriptionKey: "Access was not granted. Enable it in Settings > Privacy."]) }
         } else {
             let granted = try await store.requestAccess(to: type)
-            if !granted { throw NSError(domain: "Jarvis", code: 1,
+            if !granted { throw NSError(domain: "SilverFox", code: 1,
                 userInfo: [NSLocalizedDescriptionKey: "Access was not granted."]) }
         }
     }
