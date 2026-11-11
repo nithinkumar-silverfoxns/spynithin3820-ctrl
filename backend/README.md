@@ -57,6 +57,10 @@ Set `OPENAI_API_KEY` for live voice/chat. Without it, `/ai/*` returns `503`
 | GET  | `/commands/catalog` | every command with risk + required permissions |
 | POST | `/commands/execute` | run the dispatcher (returns `authorized` / `needs_confirmation` / `denied`) |
 | POST | `/commands/result` | device reports outcome; returns spoken response |
+| GET/POST | `/conversations` | list / create encrypted conversations (create needs memory consent) |
+| GET/DELETE | `/conversations/{id}` | read (decrypted) / delete a conversation (404 cross-user) |
+| POST | `/conversations/{id}/messages` | append an encrypted message |
+| DELETE | `/conversations` | delete all of the user's history |
 | POST | `/ai/realtime/session` | mint an ephemeral OpenAI Realtime token for the device |
 | POST | `/ai/chat` | text chat fallback |
 | WS   | `/api/v1/voice/stream?token=...` | authorize tool calls during a live voice session |
@@ -65,8 +69,12 @@ Set `OPENAI_API_KEY` for live voice/chat. Without it, `/ai/*` returns `503`
 
 ```bash
 # from the repo root, with the venv active
-python tests/test_smoke.py
+pip install pytest
+python -m pytest tests/ -q
 ```
 
-Covers the auth flow, catalog, a low-risk authorize, the high-risk
-confirmation round-trip, permission denial, and the OpenAI-not-configured 503.
+Covers the auth flow, catalog, low-risk authorize, the high-risk confirmation
+round-trip, permission denial, the OpenAI-not-configured 503, conversation
+history CRUD, and security tests (token tampering, confirmation-token binding,
+cross-user isolation, consent gating, and encryption-at-rest). Runs in CI on
+every push (`.github/workflows/ci.yml`).

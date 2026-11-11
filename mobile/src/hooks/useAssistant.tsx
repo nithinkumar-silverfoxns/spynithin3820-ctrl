@@ -1,5 +1,6 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useRef, useState } from 'react';
 import { commandService } from '../services/commands';
+import { conversationService } from '../services/conversations';
 import { currentPermissions, deviceActions } from '../services/deviceActions';
 import { tts } from '../services/tts';
 import { ChatMessage, voiceService } from '../services/voice';
@@ -39,11 +40,34 @@ export function AssistantProvider({ children }: { children: React.ReactNode }) {
   const [busy, setBusy] = useState(false);
   const [pending, setPending] = useState<Pending | null>(null);
 
+  // Server-backed encrypted history (only when memory consent is on).
+  const convoId = useRef<number | null>(null);
+  const persistOff = useRef(false);
+
+  const persist = useCallback(async (role: 'user' | 'assistant', content: string) => {
+    if (persistOff.current || !content.trim()) return;
+    try {
+      if (convoId.current == null) {
+        const c = await conversationService.create(content.slice(0, 40) || 'Conversation');
+        if (!c) {
+          persistOff.current = true; // memory consent is off — stop trying this session
+          return;
+        }
+        convoId.current = c.id;
+      }
+      const ok = await conversationService.addMessage(convoId.current, role, content);
+      if (!ok) persistOff.current = true;
+    } catch {
+      // Persistence must never break the conversation.
+    }
+  }, []);
+
   const say = useCallback((text: string) => {
     if (!text?.trim()) return;
     setLines((l) => [...l, { id: nextId(), role: 'jarvis', text }]);
     tts.speak(text);
-  }, []);
+    persist('assistant', text);
+  }, [persist]);
 
   const runDirective = useCallback(
     async (name: string, directive: { name: string; params: Record<string, unknown>; risk: string }) => {
@@ -76,6 +100,7 @@ export function AssistantProvider({ children }: { children: React.ReactNode }) {
       const trimmed = text.trim();
       if (!trimmed || busy) return;
       setLines((l) => [...l, { id: nextId(), role: 'you', text: trimmed }]);
+      persist('user', trimmed);
       setBusy(true);
       try {
         const history: ChatMessage[] = [
@@ -101,7 +126,7 @@ export function AssistantProvider({ children }: { children: React.ReactNode }) {
         setBusy(false);
       }
     },
-    [busy, lines, say, handleCommand],
+    [busy, lines, say, handleCommand, persist],
   );
 
   const resolvePending = useCallback(
@@ -132,6 +157,9 @@ export function AssistantProvider({ children }: { children: React.ReactNode }) {
     setLines([]);
     setPending(null);
     tts.stop();
+    // Start a fresh conversation next time; re-check consent.
+    convoId.current = null;
+    persistOff.current = false;
   }, []);
 
   return (

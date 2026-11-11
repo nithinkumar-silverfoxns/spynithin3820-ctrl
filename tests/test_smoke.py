@@ -6,9 +6,10 @@ a low-risk command, and the high-risk confirmation round-trip.
 import os
 import sys
 
-# Isolated throwaway SQLite DB for the test run.
-os.environ["DATABASE_URL"] = "sqlite:///./test_smoke.db"
-os.environ["JWT_SECRET"] = "test-secret-not-for-production"
+# setdefault so this cooperates with conftest when run under pytest, and still
+# works standalone (python tests/test_smoke.py).
+os.environ.setdefault("DATABASE_URL", "sqlite:///./test_smoke.db")
+os.environ.setdefault("JWT_SECRET", "test-secret-not-for-production")
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "backend"))
 
 from fastapi.testclient import TestClient  # noqa: E402
