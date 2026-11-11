@@ -36,7 +36,7 @@
   .wordmark .dot{width:14px;height:14px;border-radius:50%;background:var(--primary);
     box-shadow:0 0 16px var(--primary)}
   .wordmark b{font-family:var(--disp);letter-spacing:4px;font-size:13px}
-  .wordmark span{color:var(--dim);letter-spacing:3px;font-size:10px;font-weight:600}
+  .wordmark span{color:var(--primary);letter-spacing:3px;font-size:10px;font-weight:800;text-shadow:0 0 12px var(--primary-soft)}
   .rec{display:flex;align-items:center;gap:7px;color:var(--dim);font-size:11px;font-weight:600;letter-spacing:.5px}
   .rec i{width:9px;height:9px;border-radius:50%;background:var(--danger);display:inline-block;animation:blink 1.4s infinite}
   @keyframes blink{50%{opacity:.25}}
@@ -97,6 +97,9 @@
   .shield li::before{content:"•";color:var(--primary);margin-right:8px}
 
   .tag{font-family:var(--disp);letter-spacing:2px;color:var(--dim);text-align:center;font-size:13px;margin-top:4px}
+  .watermark{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:14px;display:flex;align-items:center;gap:7px;opacity:.9;z-index:5;pointer-events:none}
+  .watermark .d{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px var(--primary)}
+  .watermark b{font-family:var(--disp);letter-spacing:3px;font-size:11px;color:var(--primary);text-shadow:0 0 12px var(--primary-soft)}
 
   /* transport / caption */
   .caption{min-height:44px;color:var(--fg);text-align:center;font-size:14px;opacity:.92;
@@ -149,6 +152,7 @@
     <select class="btn" id="voice" aria-label="Narration voice"></select>
   </div>
   <p class="hint" id="hint" hidden>Tip: screen-record this page (with audio) to export your promo video.</p>
+  <div class="watermark" aria-hidden="true"><span class="d"></span><b>SILVERFOXNS</b></div>
 </div>
 
 <div class="overlay" id="overlay">
@@ -176,7 +180,7 @@
   var scenes=[
     { glyph:"◉", hold:3800,
       vo:"This is JARVIS. By Silverfoxns. Your personal A.I., on your phone.",
-      visual:function(){return h('<h1 class="headline">Meet <span class="cy">JARVIS</span></h1><p class="sub">by Silverfoxns</p>');} },
+      visual:function(){return h('<h1 class="headline">Meet <span class="cy">JARVIS</span></h1><p class="sub">by <span class="cy">SILVERFOXNS</span></p>');} },
     { glyph:"🛡", hold:3600,
       vo:"It stays locked behind your biometrics, so only you get in.",
       visual:function(){return h('<h1 class="headline">Locked to <span class="cy">you</span></h1><p class="sub">Face ID or fingerprint to unlock</p>');} },
