@@ -1,0 +1,297 @@
+<title>JARVIS Promo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  /* Layout: full-viewport cinematic stage — orb + glow center, a scene panel below, caption band + transport at the base. Deliberate single dark theme. */
+  :root{
+    --bg:#060A18; --bg2:#0a1024; --surface:#0E1630; --surface2:#13203F;
+    --fg:#EAF2FF; --dim:#8698BF; --primary:#28E0FF; --primary-soft:rgba(40,224,255,.35);
+    --accent:#7A5CFF; --ok:#3BE38B; --danger:#FF5C7A; --border:rgba(120,150,210,.18);
+    color-scheme:dark;
+    --disp:"Space Grotesk",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:
+      radial-gradient(1200px 700px at 70% -10%, rgba(40,224,255,.10), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(122,92,255,.12), transparent 55%),
+      var(--bg);
+    color:var(--fg);font-family:var(--body);overflow:hidden;
+  }
+  .stage{
+    position:relative;height:100%;display:flex;flex-direction:column;
+    padding-block:18px;
+    padding-left:max(16px,env(safe-area-inset-left,0px));
+    padding-right:max(16px,env(safe-area-inset-right,0px));
+    max-width:720px;margin:0 auto;
+  }
+
+  /* top brand bar */
+  .brandbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .wordmark{display:flex;align-items:center;gap:10px}
+  .wordmark .dot{width:14px;height:14px;border-radius:50%;background:var(--primary);
+    box-shadow:0 0 16px var(--primary)}
+  .wordmark b{font-family:var(--disp);letter-spacing:4px;font-size:13px}
+  .wordmark span{color:var(--dim);letter-spacing:3px;font-size:10px;font-weight:600}
+  .rec{display:flex;align-items:center;gap:7px;color:var(--dim);font-size:11px;font-weight:600;letter-spacing:.5px}
+  .rec i{width:9px;height:9px;border-radius:50%;background:var(--danger);display:inline-block;animation:blink 1.4s infinite}
+  @keyframes blink{50%{opacity:.25}}
+
+  /* center stage */
+  .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;min-height:0}
+
+  .orb{position:relative;width:200px;height:200px;display:grid;place-items:center;flex:none}
+  .ring{position:absolute;inset:30px;border-radius:50%;border:2px solid var(--primary);opacity:0}
+  .playing .ring{animation:pulse 2.1s ease-out infinite}
+  .playing .ring:nth-child(2){animation-delay:.7s}
+  .playing .ring:nth-child(3){animation-delay:1.4s}
+  @keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.3);opacity:0}}
+  .core{width:140px;height:140px;border-radius:50%;background:
+      radial-gradient(circle at 50% 40%, var(--surface2), var(--surface));
+    border:2px solid var(--primary);display:grid;place-items:center;
+    box-shadow:0 0 40px var(--primary-soft), inset 0 0 30px rgba(40,224,255,.12);
+    transition:transform .4s ease}
+  .playing .core{animation:breathe 1.9s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.06)}}
+  .core .glyph{font-family:var(--disp);font-size:40px;color:var(--primary);
+    text-shadow:0 0 18px var(--primary-soft)}
+
+  /* scene panel */
+  .panel{width:100%;min-height:150px;display:flex;align-items:center;justify-content:center}
+  .panel>*{width:100%}
+  .fade{animation:fade .6s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .headline{font-family:var(--disp);font-weight:700;text-align:center;
+    font-size:clamp(26px,7vw,40px);line-height:1.08;text-wrap:balance;margin:0}
+  .headline .cy{color:var(--primary)}
+  .sub{color:var(--dim);text-align:center;margin:10px 0 0;font-size:15px}
+
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px}
+  .tile .k{font-size:10px;letter-spacing:1px;color:var(--dim);font-weight:700}
+  .tile .v{display:flex;align-items:center;gap:8px;margin-top:8px;font-weight:700;font-size:17px}
+  .tile .v i{width:10px;height:10px;border-radius:50%}
+  .b-ok{background:var(--ok)} .b-cy{background:var(--primary)} .b-ac{background:var(--accent)}
+
+  .chat{display:flex;flex-direction:column;gap:10px}
+  .bub{max-width:82%;padding:11px 14px;border-radius:16px;font-size:15px;line-height:1.35}
+  .me{align-self:flex-end;background:var(--primary);color:#06101f;font-weight:600}
+  .ai{align-self:flex-start;background:var(--surface);border:1px solid var(--border)}
+
+  .confirm{background:var(--surface2);border:1px solid var(--accent);border-radius:18px;padding:16px;max-width:460px;margin:0 auto}
+  .confirm .k{font-size:11px;letter-spacing:1px;color:var(--accent);font-weight:800}
+  .confirm .q{font-size:17px;font-weight:700;margin:6px 0 12px}
+  .confirm .btns{display:flex;gap:10px}
+  .confirm button{flex:1;border:none;border-radius:12px;padding:11px;font-weight:800;font-family:var(--body);font-size:14px}
+  .yes{background:var(--ok);color:#06101f} .no{background:var(--danger);color:#120509}
+
+  .shield{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .shield .big{font-size:52px}
+  .shield ul{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:7px}
+  .shield li{color:var(--fg);font-size:14px;opacity:.9}
+  .shield li::before{content:"•";color:var(--primary);margin-right:8px}
+
+  .tag{font-family:var(--disp);letter-spacing:2px;color:var(--dim);text-align:center;font-size:13px;margin-top:4px}
+
+  /* transport / caption */
+  .caption{min-height:44px;color:var(--fg);text-align:center;font-size:14px;opacity:.92;
+    display:flex;align-items:center;justify-content:center;padding:0 6px}
+  .dots{display:flex;gap:7px;justify-content:center;margin:12px 0}
+  .dots i{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s}
+  .dots i.on{background:var(--primary);box-shadow:0 0 10px var(--primary-soft)}
+  .controls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+  .btn{border:1px solid var(--border);background:var(--surface);color:var(--fg);
+    border-radius:12px;padding:10px 16px;font-weight:700;font-family:var(--body);font-size:14px;cursor:pointer}
+  .btn.primary{background:var(--primary);color:#06101f;border-color:transparent}
+  .btn:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+  select.btn{appearance:none;padding-right:16px}
+  .hint{color:var(--dim);font-size:11px;text-align:center;margin-top:10px;line-height:1.5}
+
+  /* play overlay */
+  .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+    background:linear-gradient(180deg,rgba(6,10,24,.72),rgba(6,10,24,.92));backdrop-filter:blur(3px);z-index:20;text-align:center;
+    padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .overlay h1{font-family:var(--disp);font-size:clamp(30px,9vw,52px);margin:0;letter-spacing:1px}
+  .overlay .play{width:84px;height:84px;border-radius:50%;border:2px solid var(--primary);background:rgba(40,224,255,.08);
+    color:var(--primary);font-size:30px;cursor:pointer;box-shadow:0 0 36px var(--primary-soft);display:grid;place-items:center}
+  .overlay p{color:var(--dim);margin:0;max-width:420px;font-size:13px;line-height:1.6}
+
+  @media (prefers-reduced-motion:reduce){
+    .playing .ring,.playing .core{animation:none}
+    .ring{opacity:.18}
+    .fade{animation:none}
+  }
+</style>
+
+<div class="stage" id="stage">
+  <div class="brandbar">
+    <div class="wordmark"><span class="dot"></span><b>JARVIS</b><span>SILVERFOXNS</span></div>
+    <div class="rec" id="rec" hidden><i></i> DEMO</div>
+  </div>
+
+  <div class="center">
+    <div class="orb" id="orb">
+      <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      <div class="core"><div class="glyph" id="glyph">◉</div></div>
+    </div>
+    <div class="panel" id="panel"></div>
+  </div>
+
+  <div class="caption" id="caption"></div>
+  <div class="dots" id="dots"></div>
+  <div class="controls" id="controls" hidden>
+    <button class="btn primary" id="replay">↻ Replay</button>
+    <select class="btn" id="voice" aria-label="Narration voice"></select>
+  </div>
+  <p class="hint" id="hint" hidden>Tip: screen-record this page (with audio) to export your promo video.</p>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="wordmark"><span class="dot"></span><b style="font-size:13px">SILVERFOXNS</b></div>
+  <h1>JARVIS</h1>
+  <button class="play" id="play" aria-label="Play promo with voice">▶</button>
+  <p>A narrated promo with voice. Tap play — then screen-record this page to export a shareable video.<br>Best in dark mode with sound on.</p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var panel=document.getElementById('panel'),
+      caption=document.getElementById('caption'),
+      glyph=document.getElementById('glyph'),
+      orb=document.getElementById('orb'),
+      dotsWrap=document.getElementById('dots'),
+      controls=document.getElementById('controls'),
+      hint=document.getElementById('hint'),
+      rec=document.getElementById('rec'),
+      overlay=document.getElementById('overlay'),
+      voiceSel=document.getElementById('voice');
+
+  // Scenes: vo = spoken + caption, visual = panel renderer, glyph = orb glyph, hold = fallback ms if no speech.
+  var scenes=[
+    { glyph:"◉", hold:3800,
+      vo:"This is JARVIS. By Silverfoxns. Your personal A.I., on your phone.",
+      visual:function(){return h('<h1 class="headline">Meet <span class="cy">JARVIS</span></h1><p class="sub">by Silverfoxns</p>');} },
+    { glyph:"🛡", hold:3600,
+      vo:"It stays locked behind your biometrics, so only you get in.",
+      visual:function(){return h('<h1 class="headline">Locked to <span class="cy">you</span></h1><p class="sub">Face ID or fingerprint to unlock</p>');} },
+    { glyph:"⬡", hold:4200,
+      vo:"One glance shows everything. Your assistant, your voice A.I., your security.",
+      visual:function(){return h('<div class="tiles">\
+        <div class="tile"><div class="k">ASSISTANT</div><div class="v"><i class="b-ok"></i>Online</div></div>\
+        <div class="tile"><div class="k">VOICE AI</div><div class="v"><i class="b-cy"></i>Ready</div></div>\
+        <div class="tile"><div class="k">SECURITY</div><div class="v"><i class="b-ok"></i>Encrypted</div></div>\
+        <div class="tile"><div class="k">MEMORY</div><div class="v"><i class="b-ac"></i>Your choice</div></div></div>');} },
+    { glyph:"◉", hold:4600, active:true,
+      vo:"Just ask, in plain language. Navigate to the nearest coffee shop. And it acts.",
+      visual:function(){return h('<div class="chat">\
+        <div class="bub me">Navigate to the nearest coffee shop</div>\
+        <div class="bub ai">On it — opening maps now. ☕</div></div>');} },
+    { glyph:"◉", hold:5200, active:true,
+      vo:"And anything sensitive always asks first. Nothing happens without your say-so.",
+      visual:function(){return h('<div class="confirm"><div class="k">CONFIRMATION REQUIRED</div>\
+        <div class="q">Do you want me to call Mom?</div>\
+        <div class="btns"><button class="yes">Yes, do it</button><button class="no">Cancel</button></div></div>');} },
+    { glyph:"🔒", hold:4600,
+      vo:"Your data stays yours. Encrypted, with your A.P.I. keys never leaving your server.",
+      visual:function(){return h('<div class="shield"><div class="big">🔒</div><ul>\
+        <li>End-to-end encrypted memory</li>\
+        <li>Confirmation before sensitive actions</li>\
+        <li>API keys stay server-side</li></ul></div>');} },
+    { glyph:"◉", hold:4800,
+      vo:"Silverfoxns JARVIS. Your personal A.I. Your voice. Your control.",
+      visual:function(){return h('<h1 class="headline"><span class="cy">SILVERFOXNS</span> JARVIS</h1>\
+        <p class="tag">Your Personal AI · Your Voice · Your Control</p>');} }
+  ];
+
+  function h(html){var d=document.createElement('div');d.className='fade';d.innerHTML=html;return d;}
+
+  // dots
+  scenes.forEach(function(){var i=document.createElement('i');dotsWrap.appendChild(i);});
+  var dots=dotsWrap.querySelectorAll('i');
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var synth=window.speechSynthesis, voices=[], timer=null, idx=-1, playing=false;
+
+  function loadVoices(){
+    if(!synth) return;
+    voices=synth.getVoices().filter(function(v){return /en(-|_|$)/i.test(v.lang);});
+    if(!voices.length) voices=synth.getVoices();
+    voiceSel.innerHTML='';
+    if(!voices.length){voiceSel.hidden=true;return;}
+    voices.forEach(function(v,i){var o=document.createElement('option');o.value=i;o.textContent=v.name.replace(/\(.*\)/,'').trim()+' · '+v.lang;voiceSel.appendChild(o);});
+    // Prefer a natural-sounding default if present.
+    var pref=voices.findIndex(function(v){return /natural|google|samantha|daniel|aria|jenny/i.test(v.name);});
+    voiceSel.value=pref>-1?pref:0;
+  }
+  if(synth){ loadVoices(); synth.onvoiceschanged=loadVoices; }
+  else { voiceSel.hidden=true; }
+
+  function setDots(n){dots.forEach(function(d,i){d.classList.toggle('on',i===n);});}
+
+  function render(scene){
+    glyph.textContent=scene.glyph;
+    orb.parentElement.classList.toggle('playing', playing && (scene.active||true));
+    panel.innerHTML='';
+    panel.appendChild(scene.visual());
+    caption.textContent=scene.vo;
+  }
+
+  function clearTimer(){ if(timer){clearTimeout(timer);timer=null;} }
+
+  function next(){
+    clearTimer();
+    idx++;
+    if(idx>=scenes.length){ finish(); return; }
+    var scene=scenes[idx];
+    setDots(idx);
+    render(scene);
+    // Speak; advance on end, with a fallback timer in case speech is unavailable/blocked.
+    var advanced=false;
+    function go(){ if(advanced) return; advanced=true; next(); }
+    if(synth){
+      try{
+        synth.cancel();
+        var u=new SpeechSynthesisUtterance(scene.vo);
+        var vi=parseInt(voiceSel.value,10);
+        if(voices[vi]) u.voice=voices[vi];
+        u.rate=1.0; u.pitch=1.02;
+        u.onend=function(){ timer=setTimeout(go, 500); };
+        u.onerror=function(){ timer=setTimeout(go, scene.hold); };
+        synth.speak(u);
+        // Safety net if onend never fires.
+        timer=setTimeout(go, scene.hold+4000);
+      }catch(e){ timer=setTimeout(go, scene.hold); }
+    } else {
+      timer=setTimeout(go, scene.hold);
+    }
+  }
+
+  function start(){
+    overlay.hidden=true; rec.hidden=false; controls.hidden=true; hint.hidden=true;
+    playing=true; idx=-1;
+    if(synth){ try{ synth.cancel(); }catch(e){} }
+    next();
+  }
+
+  function finish(){
+    playing=false; clearTimer();
+    orb.parentElement.classList.remove('playing');
+    // Rest on the closing frame.
+    idx=scenes.length-1; setDots(idx); render(scenes[idx]);
+    caption.textContent='';
+    controls.hidden=false; hint.hidden=false;
+  }
+
+  document.getElementById('play').addEventListener('click',start);
+  document.getElementById('replay').addEventListener('click',start);
+
+  // First still frame (for thumbnail / before play): show the opening scene quietly.
+  render(scenes[0]); setDots(0);
+})();
+</script>
